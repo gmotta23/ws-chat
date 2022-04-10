@@ -1,0 +1,13 @@
+@import '../globals/colors.scss';
+
+header {
+  color: $primaryGreen;
+  height: 3rem;
+  background-color: $primaryGray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .title {
+    font-size: 1.3rem;
+  }
+}
