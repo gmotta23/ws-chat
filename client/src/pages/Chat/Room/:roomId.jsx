@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Room from '~/components/Room';
 
 const ChatRoom = () => {
   const {roomId} = useParams();
@@ -37,6 +38,7 @@ const ChatRoom = () => {
       {usernameIsSet && (
         <>
           WELCOME TO ROOM {roomId}, {username}
+          <Room />
         </>
       )}
     </>
