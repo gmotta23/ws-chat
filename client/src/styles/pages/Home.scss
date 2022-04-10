@@ -5,6 +5,6 @@
   padding: 2rem 30vw;
   justify-content: space-between;
   .button {
-    @include primaryButton;
+    @include primaryLink;
   }
 }

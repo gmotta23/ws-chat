@@ -2,10 +2,11 @@ const ChatDBHandler = require("../db/chat")
 const { generateUUID } = require("../services/internal/crypto")
 
 const ChatUseCases = {
-  createChatRoom: async () => {
+  createChatRoom: async (chatRoomName) => {
     try {
       const chatRoom = {
-        uuid: generateUUID()
+        uuid: generateUUID(),
+        name: chatRoomName
       }
 
       const insert = await ChatDBHandler.insertChatRoom(chatRoom)

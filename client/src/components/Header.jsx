@@ -7,7 +7,9 @@ function Header () {
   return (
     <header>
       <div className="title">
-        {text}
+        <a href="/">
+          {text}
+        </a>
       </div>
     </header>
   )

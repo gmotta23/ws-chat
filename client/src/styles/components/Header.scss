@@ -9,5 +9,9 @@ header {
   align-items: center;
   .title {
     font-size: 1.3rem;
+    a {
+      text-decoration: none;
+      color: $primaryGreen;
+    }
   }
 }

@@ -1,24 +1,48 @@
 @import '../globals/colors.scss';
 
+@mixin primaryLink {
+  a {
+    background-color: lighten($primaryGreen, 10%);
+    height: 3rem;
+    padding: 0 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: $primaryGray;
+    transition: .3s;
+    border-radius: .3rem;
+    &:hover {
+      border-color: darken($primaryGray, 100%);
+      background-color: lighten($primaryGreen, 12%);
+      color: lighten($primaryGray, 50%);
+    }
+  }
+}
+
 @mixin primaryButton {
   background-color: lighten($primaryGreen, 10%);
   height: 3rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 0 1rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primaryGray;
+  transition: .3s;
   border-radius: .3rem;
   border: 1px solid $primaryGray;
-  transition: .3s;
   &:hover {
     border-color: darken($primaryGray, 100%);
+    background-color: lighten($primaryGreen, 12%);
+    color: lighten($primaryGray, 50%);
+    cursor: pointer;
   }
-  a {
-    text-decoration: none;
-    height: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $primaryGray;
+}
+
+@mixin simpleInput {
+  display: flex;
+  margin-bottom: 1rem;
+  label {
+    margin-right: 1rem;
   }
 }

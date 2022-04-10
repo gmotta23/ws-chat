@@ -1,2 +1,23 @@
 @import '../globals/index.scss';
 
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.subtitle {
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+form {
+  .input-container {
+    @include simpleInput;
+  }
+}
+
+.button {
+  @include primaryButton;
+}

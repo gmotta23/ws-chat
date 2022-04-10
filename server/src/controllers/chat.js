@@ -3,7 +3,8 @@ const ChatUseCases = require("../use-cases/chat")
 const ChatController = {
   createChatRoom: async (req, res) => {
     try {
-      const chatRoom = await ChatUseCases.createChatRoom()
+      const { chatRoomName } = req.body;
+      const chatRoom = await ChatUseCases.createChatRoom(chatRoomName);
       return res.send(chatRoom)
     } catch (error) {
       console.log(error)

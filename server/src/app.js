@@ -1,11 +1,13 @@
 const express = require('express')
 const cors = require('cors')
+const bodyParser = require('body-parser')
 
 const IndexRouter = require('../src/routes/index')
 const ChatRouter = require('../src/routes/chat')
 
 const app = express()
 app.use(cors())
+app.use(bodyParser.json())
 
 app.use('/', IndexRouter)
 app.use('/chat', ChatRouter)

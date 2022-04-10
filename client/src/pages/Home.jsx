@@ -9,14 +9,14 @@ function Home() {
         Welcome!
       </h1>
       <div className="dialog">
-        Do you want to create a room or join a room?
+        Do you want to create or join a room?
       </div>
       <div className="buttons">
         <div className="button">
           <Link to="/create-room">Create room</Link>
         </div>
         <div className="button">
-          <Link to="/about">Join room</Link>
+          <Link to="/join-room">Join room</Link>
         </div>        
       </div>
     </>
