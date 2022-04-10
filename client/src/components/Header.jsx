@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../styles/components/Header.scss'
+import '~/styles/components/Header.scss'
 
 function Header () {
   const text = 'Simple Chat App'
