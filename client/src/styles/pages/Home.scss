@@ -1,5 +1,10 @@
-@import '../globals/colors.scss';
+@import '../globals/index.scss';
 
 .buttons {
   display: flex;
+  padding: 2rem 30vw;
+  justify-content: space-between;
+  .button {
+    @include primaryButton;
+  }
 }

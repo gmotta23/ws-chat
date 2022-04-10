@@ -1,0 +1,24 @@
+@import '../globals/colors.scss';
+
+@mixin primaryButton {
+  background-color: lighten($primaryGreen, 10%);
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  border-radius: .3rem;
+  border: 1px solid $primaryGray;
+  transition: .3s;
+  &:hover {
+    border-color: darken($primaryGray, 100%);
+  }
+  a {
+    text-decoration: none;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primaryGray;
+  }
+}

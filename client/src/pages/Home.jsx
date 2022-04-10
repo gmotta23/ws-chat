@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import '../styles/pages/Home.scss'
+import '~/styles/pages/Home.scss'
 
 function Home() {
   return (
@@ -13,7 +13,7 @@ function Home() {
       </div>
       <div className="buttons">
         <div className="button">
-          <Link to="/about">Create room</Link>
+          <Link to="/create-room">Create room</Link>
         </div>
         <div className="button">
           <Link to="/about">Join room</Link>
