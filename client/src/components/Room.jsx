@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import socketIOClient from 'socket.io-client';
+import '~/styles/components/Room.scss'
+
 const ENDPOINT = 'http://localhost:4001';
+const socket = socketIOClient(ENDPOINT);
+
 
 function Room({roomId, username}) {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
 
-  const socket = socketIOClient(ENDPOINT);
+  socket.on('get_chat_room', roomId, (response) => {
+    setMessages(response.chat)
+  });
 
   useEffect(() => {
     console.log('use effect')
@@ -14,7 +20,7 @@ function Room({roomId, username}) {
       setMessages(response.chat)
     });
 
-    return () => socket.disconnect();
+    // return () => socket.disconnect();
   }, [newMessage]);
 
   const sendNewMessage = () => {
@@ -27,13 +33,22 @@ function Room({roomId, username}) {
     socket.emit('write_on_chat_room', args, (response) => {
       console.log(response)
     });
+
+
+    socket.emit('get_chat_room', roomId, (response) => {
+      setMessages(response.chat)
+    });
     setNewMessage('');
   }
 
   return (
     <div className="container">
       <div className="messages">
-        {messages.map((m) => <>{m.message}</>)}
+        {messages.map((messageObject) => (
+          <div className="message">
+            {messageObject.username}[{Date(messageObject.time)}]: {messageObject.message}
+          </div>
+        ))}
       </div>
       <div className="new-message">
         <input type="text" value={newMessage} onChange={(e) => setNewMessage(e.target.value)} />
