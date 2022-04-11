@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '~/styles/pages/CreateRoom.scss'
@@ -7,8 +8,15 @@ const CreateRoom = () => {
   const navigate = useNavigate();
 
   const createRoom = async () => {
-    // create room on backend
-    navigate(`/room/${roomName}`)
+    const {data} = await axios({
+      method: 'POST',
+      url: 'http://localhost:4000/chat',
+      data: {
+        chatRoomName: roomName
+      }
+    })
+    const roomId = data.uuid
+    navigate(`/room/${roomId}`)
   }
 
   return (

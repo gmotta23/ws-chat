@@ -26,7 +26,7 @@ const ChatController = {
       const { chatRoomId } = req.params;
       const { username, message } = req.body;
 
-      const newMessage = await ChatUseCases.writeOnChatRoom(chatRoomId, username, message);
+      const newMessage = await ChatUseCases.writeOnChatRoom(chatRoomId, message, username);
       return res.send(newMessage);
     } catch (error) {
       console.log(error)

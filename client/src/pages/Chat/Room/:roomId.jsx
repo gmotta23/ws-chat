@@ -38,7 +38,7 @@ const ChatRoom = () => {
       {usernameIsSet && (
         <>
           WELCOME TO ROOM {roomId}, {username}
-          <Room />
+          <Room roomId={roomId} username={username} />
         </>
       )}
     </>

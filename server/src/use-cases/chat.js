@@ -43,6 +43,7 @@ const ChatUseCases = {
       return newMessage;
 
     } catch (error) {
+      console.log(error)
       return false;
     }
   },

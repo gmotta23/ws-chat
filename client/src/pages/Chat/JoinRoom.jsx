@@ -3,12 +3,12 @@ import { Link, useNavigate } from "react-router-dom";
 import '~/styles/pages/CreateRoom.scss'
 
 const JoinRoom = () => {
-  const [roomName, setRoomName] = useState('');
+  const [roomId, setRoomId] = useState('');
   const navigate = useNavigate();
 
   const joinRoom = async () => {
     // see if room exists
-    navigate(`/room/${roomName}`)
+    navigate(`/room/${roomId}`)
   }
 
   return (
@@ -19,7 +19,7 @@ const JoinRoom = () => {
       <form>
         <div className="input-container">
           <label htmlFor="room-name">Room ID</label>
-          <input id="room-name" type="text" value={roomName} onChange={(e) => setRoomName(e.target.value)} />
+          <input id="room-name" type="text" value={roomId} onChange={(e) => setRoomId(e.target.value)} />
         </div>
         <div className="action">
           <div className="button" onClick={joinRoom}>
