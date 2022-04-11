@@ -7,6 +7,9 @@ const ChatDBHandler = {
   },
   getChatRooms: async () => {
     return chatRooms
+  },
+  getChatRoomById: async (chatRoomId) => {
+    return chatRooms[chatRoomId]
   }
 }
 

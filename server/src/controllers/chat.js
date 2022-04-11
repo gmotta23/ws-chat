@@ -1,3 +1,4 @@
+const ChatDBHandler = require("../db/chat");
 const ChatUseCases = require("../use-cases/chat")
 
 const ChatController = {
@@ -15,6 +16,28 @@ const ChatController = {
     try {
       const chatRooms = await ChatUseCases.getChatRooms()
       return res.send(chatRooms)
+    } catch (error) {
+      console.log(error)
+      res.status(400).send('Something wrong happened.')
+    }
+  },
+  writeOnChatRoom: async (req, res) => {
+    try {
+      const { chatRoomId } = req.params;
+      const { username, message } = req.body;
+
+      const newMessage = await ChatUseCases.writeOnChatRoom(chatRoomId, username, message);
+      return res.send(newMessage);
+    } catch (error) {
+      console.log(error)
+      res.status(400).send('Something wrong happened.')
+    }
+  },
+  getChatRoomById: async (req, res) => {
+    try {
+      const { chatRoomId } = req.params;
+      const chatRoom = await ChatDBHandler.getChatRoomById(chatRoomId);
+      return res.send(chatRoom)
     } catch (error) {
       console.log(error)
       res.status(400).send('Something wrong happened.')

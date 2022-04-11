@@ -6,7 +6,8 @@ const ChatUseCases = {
     try {
       const chatRoom = {
         uuid: generateUUID(),
-        name: chatRoomName
+        name: chatRoomName,
+        chat: [],
       }
 
       const insert = await ChatDBHandler.insertChatRoom(chatRoom)
@@ -23,7 +24,28 @@ const ChatUseCases = {
     } catch (error) {
       return false
     }
-  }
+  },
+  writeOnChatRoom: async (chatRoomId, message, username) => {
+    try {
+      const time = Date.now();
+      const id = generateUUID();
+      const chatRoom = await ChatDBHandler.getChatRoomById(chatRoomId);
+
+      const newMessage = {
+        time: time,
+        id: id,
+        username: username,
+        message: message
+      };
+
+      chatRoom.chat.push(newMessage);
+
+      return newMessage;
+
+    } catch (error) {
+      return false;
+    }
+  },
 }
 
 module.exports = ChatUseCases
