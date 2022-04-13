@@ -9,19 +9,21 @@ const SocketFunctionsMap = {
 const SocketFunctions = {
   [SocketFunctionsMap.GET_CHAT_ROOM]: async (chatRoomId, callback) => {
     try {
+      console.log('get_chat_room')
       const chatRoom = await ChatDBHandler.getChatRoomById(chatRoomId)
-      await callback(chatRoom);
+      if (callback) await callback(chatRoom);
+      return chatRoom;
     } catch (error) {
       console.log(error)
     }
   },
   [SocketFunctionsMap.WRITE_ON_CHAT_ROOM]: async (arguments, callback) => {
     const { chatRoomId, username, message } = arguments
+    console.log('write_chat')
     const newMessage = await ChatUseCases.writeOnChatRoom(chatRoomId, message, username);
+    // console.log('write_chat', newMessage)
     callback(newMessage)
   }
 }
-
-let a = Object.keys(SocketFunctions)
 
 module.exports = {SocketFunctions, SocketFunctionsMap};
